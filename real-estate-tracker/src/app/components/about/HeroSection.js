@@ -13,23 +13,18 @@ export default function HeroSection() {
       <div
         className="relative flex flex-col items-center justify-center p-8 min-h-[60vh] bg-cover bg-center"
         style={{
-          backgroundImage: `url('/home/selling_house.png')`, 
+          backgroundImage: `url('/about/team_photo.png')`, 
         }}
       >
         <div className="absolute inset-0 bg-[#1A3C5A]/70" />
         <div className="relative z-10 text-center space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-            Discover Your Dream Property with Realytics
+          About Us
           </h1>
           <p className="text-lg">
-            Your journey to finding the perfect property begins here. Explore our listings to find the home that matches your dreams.
+          We're dedicated to providing transparent real estate information, helping you make informed decisions about your next home.
           </p>
           <div className="flex justify-center space-x-4">
-            <Link href="/properties">
-              <button className="px-6 py-3 bg-[#D4A017] text-[#333333] rounded-lg hover:bg-[#A8B5A2] transition-colors duration-200">
-                Browse Properties
-              </button>
-            </Link>
           </div>
           <div className="flex justify-center space-x-8 mt-6">
             {stats.map((stat, index) => (

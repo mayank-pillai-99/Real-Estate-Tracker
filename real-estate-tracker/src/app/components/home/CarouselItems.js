@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import React, { useRef } from 'react';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 export default function CarouselItems() {
   const carouselRef = useRef(null);
@@ -64,39 +65,13 @@ export default function CarouselItems() {
           onClick={scrollLeft}
           className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#D4A017] text-[#333333] p-2 rounded-full hover:bg-[#A8B5A2] transition-colors duration-200"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
+          <FaChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={scrollRight}
           className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-[#D4A017] text-[#333333] p-2 rounded-full hover:bg-[#A8B5A2] transition-colors duration-200"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
+          <FaChevronRight className="w-6 h-6" />
         </button>
 
         <div

@@ -6,7 +6,7 @@ export default function Navbar() {
     { href: '/', label: 'Home' }, 
     { href: '/about', label: 'About Us' }, 
     { href: '/properties', label: 'Properties' },
-    { href: '/products', label: 'Products' }, 
+    { href: '/services', label: 'Services' }, 
     { href: '/blog', label: 'Blog' }, 
   ];
 

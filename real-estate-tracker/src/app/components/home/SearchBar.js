@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 
 export default function SearchBar() {
   const [city, setCity] = useState('');
