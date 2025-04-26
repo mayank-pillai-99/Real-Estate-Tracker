@@ -1,0 +1,119 @@
+"use client";
+import React, { useRef } from 'react';
+
+export default function TestimonialCarousel() {
+  const carouselRef = useRef(null);
+
+  const testimonials = [
+    {
+      name: 'Sarah Johnson',
+      review: 'Realytics made finding my dream home so easy! The process was smooth and the support was exceptional.',
+      photo: 'home/customer1.jpg', 
+    },
+    {
+      name: 'Michael Lee',
+      review: 'The property valuation service was spot on. Helped me make a confident investment decision.',
+      photo: 'home/customer2.jpg', 
+    },
+    {
+      name: 'Emily Davis',
+      review: 'Effortless property management with Realytics—saved me so much time and stress!',
+      photo: 'home/customer3.jpg', 
+    },
+    {
+      name: 'David Brown',
+      review: 'Great insights for smart investments. Highly recommend their services!',
+      photo: 'home/customer4.jpg', 
+    },
+    {
+      name: 'Lisa Carter',
+      review: 'The property pricing history was incredibly helpful in finding the perfect property for me.',
+      photo: 'home/customer5.jpg', 
+    },
+    {
+      name: 'James Taylor',
+      review: 'Realytics’ search features exceeded my expectations with their capabilities.',
+      photo: 'home/customer6.jpg',
+    },
+  ];
+
+  const scrollLeft = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: -384, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({ left: 384, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="w-full bg-[#161D6F] text-[#F6F6F6] py-8">
+      <div className="relative px-8">
+        <h2 className="text-3xl font-bold mb-6 text-center">Customer Testimonials</h2>
+        <button
+          onClick={scrollLeft}
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#98DED9] text-[#161D6F] p-2 rounded-full hover:bg-blue-400 transition-colors duration-200"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+        <button
+          onClick={scrollRight}
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-[#98DED9] text-[#161D6F] p-2 rounded-full hover:bg-blue-400 transition-colors duration-200"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+
+        <div
+          ref={carouselRef}
+          className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth space-x-4 pb-4"
+        >
+          {testimonials.map((item, index) => (
+            <div
+              key={index}
+              className="flex-none w-96 snap-center bg-[#F6F6F6] text-[#161D6F] rounded-lg shadow-md p-8"
+            >
+              {item.photo && (
+                <img
+                  src={item.photo}
+                  alt={item.name}
+                  className="w-20 h-20 rounded-full mb-6 object-cover"
+                />
+              )}
+              <p className="text-lg italic mb-6">"{item.review}"</p>
+              <h3 className="text-xl font-semibold">{item.name}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
