@@ -12,16 +12,16 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="w-full bg-[#F6F6F6] shadow-md flex items-center justify-between px-8 p-1">
+      <header className="w-full bg-[#F9FAFB] shadow-md flex items-center justify-between px-8 p-1">
         <Link href="/">
-          <img src="/Realytics.png" alt="logo" className="h-15 w-50" />
+          <img src="/Realytics.png" alt="logo" className="h-12 w-32" />
         </Link>
         <nav className="hidden md:flex flex-1 justify-center space-x-8">
           {navLinks.map((link) => (
             <Link 
               key={link.href} 
               href={link.href} 
-              className="text-[#161D6F] hover:text-blue-400 focus:text-blue-400 active:text-blue-400 transition-colors duration-200"
+              className="text-[#333333] hover:text-[#A8B5A2] focus:text-[#A8B5A2] active:text-[#A8B5A2] transition-colors duration-200"
             >
               {link.label}
             </Link>

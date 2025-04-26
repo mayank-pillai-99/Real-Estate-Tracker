@@ -9,14 +9,14 @@ export default function HeroSection() {
   ];
 
   return (
-    <div className="w-full bg-[#161D6F] text-[#F6F6F6]">
+    <div className="w-full bg-[#1A3C5A] text-[#F9FAFB]">
       <div
         className="relative flex flex-col items-center justify-center p-8 min-h-[60vh] bg-cover bg-center"
         style={{
-          backgroundImage: `url('home/selling_house.png')`, 
+          backgroundImage: `url('/home/selling_house.png')`, 
         }}
       >
-        <div className="absolute inset-0 bg-[#161D6F]/30" />
+        <div className="absolute inset-0 bg-[#1A3C5A]/70" />
         <div className="relative z-10 text-center space-y-4">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
             Discover Your Dream Property with Realytics
@@ -26,7 +26,7 @@ export default function HeroSection() {
           </p>
           <div className="flex justify-center space-x-4">
             <Link href="/properties">
-              <button className="px-6 py-3 bg-[#F6F6F6] text-[#161D6F] rounded-lg hover:bg-blue-400 transition-colors duration-200">
+              <button className="px-6 py-3 bg-[#D4A017] text-[#333333] rounded-lg hover:bg-[#A8B5A2] transition-colors duration-200">
                 Browse Properties
               </button>
             </Link>
