@@ -59,10 +59,10 @@ export default function BlogList() {
   return (
     <section className="py-12 bg-[#1A3C5A] text-[#F9FAFB]">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-2xl font-bold text-[#F9FAFB] mb-6">Latest Articles</h2>
+        <h2 className="text-3xl font-bold text-[#F9FAFB] mb-6">Latest Articles</h2>
         <div className="space-y-8">
           {blogPosts.map(post => (
-            <div key={post.id} className="bg-[#F9FAFB] rounded-lg shadow-md overflow-hidden hover:shadow-lg hover:bg-[#A8B5A2]/10 transition-shadow">
+            <div key={post.id} className="bg-[#F9FAFB] rounded-lg shadow-md  hover:bg-[#A8B5A2]/10 ">
               <div className="md:flex">
                 <div className="md:w-1/3">
                   <img
@@ -71,12 +71,10 @@ export default function BlogList() {
                     className="h-48 md:h-full w-full object-cover"
                   />
                 </div>
-                <div className="md:w-2/3 p-6">
-                  <div className="mb-2">
-                    <span className="inline-block bg-[#D4A017]/20 text-[#D4A017] text-xs font-semibold px-2 py-1 rounded-full">
+                <div className="md:w-2/3 p-6"> 
+                    <span className="inline-block bg-[#D4A017]/20 text-[#D4A017] text-xs font-semibold px-2 py-1 rounded-full mb-2">
                       {post.category}
                     </span>
-                  </div>
                   <h3 className="text-xl font-bold text-[#333333] mb-2">{post.title}</h3>
                   <p className="text-[#333333] mb-4">{post.excerpt}</p>
                   <div className="flex justify-between text-sm text-[#333333] mb-4">
@@ -93,7 +91,7 @@ export default function BlogList() {
                       <span>{post.comments} comments</span>
                     </div>
                   </div>
-                  <Link href={`/blog/${post.id}`} className="inline-flex items-center text-[#A8B5A2] hover:text-[#D4A017] font-medium">
+                  <Link href="https://www.zillowgroup.com/news/" className="inline-flex items-center text-[#A8B5A2] hover:text-[#D4A017]">
                     Read More <FaArrowRight className="ml-1 text-[#A8B5A2] hover:text-[#D4A017]" />
                   </Link>
                 </div>

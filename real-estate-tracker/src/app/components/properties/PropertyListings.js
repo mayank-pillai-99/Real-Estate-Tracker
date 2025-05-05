@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 const PropertyListings = () => {
-  // Mock data for properties with only the first carousel photo
   const properties = [
       {
           bathrooms: 4,
@@ -306,13 +305,10 @@ const PropertyListings = () => {
   return (
       <section className="py-12 bg-[#1A3C5A] text-[#F9FAFB]">
           <div className="max-w-7xl mx-auto px-4">
-              <h2 className="text-2xl font-bold text-[#F9FAFB] mb-6">Available Properties</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <h2 className="text-4xl font-bold text-[#F9FAFB] mb-6">Available Properties</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {properties.map((property) => (
-                      <div
-                          key={property.zpid}
-                          className="bg-[#F9FAFB] rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-                      >
+                      <div key={property.zpid} className="bg-[#F9FAFB] rounded-lg">
                           <img
                               src={property.imgSrc}
                               alt={property.address}
@@ -321,7 +317,7 @@ const PropertyListings = () => {
                           <div className="p-4 text-[#333333]">
                               <h3 className="text-lg font-semibold text-[#D4A017] mb-2">{property.address}</h3>
                               <p className="text-xl font-bold mb-2">${property.price.toLocaleString()}</p>
-                              <div className="flex flex-wrap gap-2 text-sm mb-4">
+                              <div className="flex gap-3 text-sm mb-4">
                                   <span>{property.bedrooms} Beds</span> |
                                   <span>{property.bathrooms} Baths</span> |
                                   <span>{property.livingArea.toLocaleString()} sqft</span> |
@@ -329,10 +325,7 @@ const PropertyListings = () => {
                                       {property.lotAreaValue.toLocaleString()} {property.lotAreaUnit}
                                   </span>
                               </div>
-                              <Link
-                                  href="./property-details"
-                                  className="inline-block bg-[#D4A017] text-[#F9FAFB] font-semibold py-2 px-4 rounded hover:bg-[#b38b14] transition-colors duration-300"
-                              >
+                              <Link href="./property-details" className="inline-block py-2 px-4 bg-[#D4A017] text-[#333333] rounded-lg hover:bg-[#A8B5A2] transition-colors duration-200">
                                   View More
                               </Link>
                           </div>

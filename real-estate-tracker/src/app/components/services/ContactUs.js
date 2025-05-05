@@ -33,7 +33,7 @@ export default function ContactUs() {
   };
 
   return (
-    <section className="py-12 bg-[#1A3C5A] text-[#F9FAFB] rounded-lg">
+    <section className="py-12 bg-[#1A3C5A] text-[#F9FAFB]">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-[#F9FAFB] mb-4">Contact Us</h2>
@@ -43,7 +43,6 @@ export default function ContactUs() {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
           <div className="bg-[#F9FAFB] rounded-lg shadow-md p-8">
             {formStatus.submitted ? (
               <div className="text-center py-8">
@@ -155,9 +154,8 @@ export default function ContactUs() {
             )}
           </div>
           
-          {/* Contact Information */}
           <div>
-            <div className="bg-[#1A3C5A] text-[#F9FAFB] rounded-lg shadow-md p-8 mb-8">
+            <div className="bg-[#112A40] text-[#F9FAFB] rounded-lg shadow-md p-8 mb-8">
               <h3 className="text-xl font-bold mb-4">Get in Touch</h3>
               <p className="mb-6">
                 Our team is available Monday through Friday, 9am to 5pm IST to answer your questions and provide assistance.
@@ -194,7 +192,7 @@ export default function ContactUs() {
                   </div>
                   <div>
                     <h4 className="font-semibold">Visit Us</h4>
-                    <p className="text-[#A8B5A2] not-italic">
+                    <p className="text-[#A8B5A2] hover:text-[#D4A017] transition-colors">
                       Newton School of Technology, Rishihood University, Sonipat, Haryana
                     </p>
                   </div>

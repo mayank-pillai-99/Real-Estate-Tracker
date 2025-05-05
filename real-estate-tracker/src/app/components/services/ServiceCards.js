@@ -48,14 +48,14 @@ export default function ServiceCards() {
 
   return (
     <section className="py-12 bg-[#1A3C5A] text-[#F9FAFB]">
-      <h2 className="text-3xl font-bold text-[#F9FAFB] mb-6 text-center">Our Core Services</h2>
-      <p className="text-[#F9FAFB] max-w-3xl mx-auto text-center mb-12">
+      <h2 className="text-5xl font-bold text-[#F9FAFB] mb-6 text-center">Our Core Services</h2>
+      <p className="text-[#F9FAFB] text-center mb-12">
         Discover how our specialized tools and services can help you navigate the real estate market with confidence.
       </p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4">
         {services.map((service) => (
-          <div key={service.id} className="bg-[#F9FAFB] rounded-lg shadow-md p-8 hover:shadow-xl hover:bg-[#A8B5A2]/20 transition-shadow">
+          <div key={service.id} className="bg-[#F9FAFB] rounded-lg shadow-md p-8 hover:bg-[#A8B5A2]/20">
             <div className="mb-6">
               {service.icon}
             </div>

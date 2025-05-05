@@ -57,25 +57,25 @@ export default function TestimonialCarousel() {
         <h2 className="text-3xl font-bold mb-6 text-center">Customer Testimonials</h2>
         <button
           onClick={scrollLeft}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#D4A017] text-[#333333] p-2 rounded-full hover:bg-[#A8B5A2] transition-colors duration-200"
+          className="absolute left-0 top-1/2 bg-[#D4A017] text-[#333333] p-2 rounded-full hover:bg-[#A8B5A2] transition-colors duration-200"
         >
           <FaChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={scrollRight}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-[#D4A017] text-[#333333] p-2 rounded-full hover:bg-[#A8B5A2] transition-colors duration-200"
+          className="absolute right-0 top-1/2 bg-[#D4A017] text-[#333333] p-2 rounded-full hover:bg-[#A8B5A2] transition-colors duration-200"
         >
           <FaChevronRight className="w-6 h-6" />
         </button>
 
         <div
           ref={carouselRef}
-          className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth space-x-4 pb-4"
+          className="flex overflow-x-auto scroll-smooth space-x-4 pb-4"
         >
           {testimonials.map((item, index) => (
             <div
               key={index}
-              className="flex-none w-96 snap-center bg-[#F9FAFB] text-[#333333] rounded-lg shadow-md p-8"
+              className="flex-none w-96  bg-[#F9FAFB] text-[#333333] rounded-lg shadow-md p-8"
             >
               {item.photo && (
                 <img
@@ -84,7 +84,7 @@ export default function TestimonialCarousel() {
                   className="w-20 h-20 rounded-full mb-6 object-cover"
                 />
               )}
-              <p className="text-lg italic mb-6">"{item.review}"</p>
+              <p className="text-lg italic mb-8">"{item.review}"</p>
               <h3 className="text-xl font-semibold">{item.name}</h3>
             </div>
           ))}

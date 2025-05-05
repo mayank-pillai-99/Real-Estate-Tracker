@@ -27,30 +27,23 @@ const PhotoCarousel = () => {
     ];
 
     return (
-        <section className="bg-[#1A3C5A] py-10">
-            <div className="max-w-4xl mx-auto px-8">
-                <h2 className="text-3xl font-bold mb-4 text-[#D4A017] text-center">Property Photos</h2>
-                <div className="relative">
+        <section className="bg-[#1A3C5A] py-12">
+            <div className="max-w-7xl mx-auto">
+                <h2 className="text-5xl font-bold mb-8 text-[#D4A017] text-center ">Property Photos</h2>
                 <Carousel>
                     <CarouselContent>
                     {photos.map((link, index) => (
                            <CarouselItem key={index}>
                            <img
                                src={link}
-                               className="w-full h-[500px] object-cover"
+                               className="w-full h-[50vh] object-cover"
                            />
                            </CarouselItem> 
                         ))}
-                        
-
                     </CarouselContent>
                     <CarouselPrevious />
                     <CarouselNext />
                 </Carousel>
-
-
-                </div>
-
             </div>
         </section>
     );

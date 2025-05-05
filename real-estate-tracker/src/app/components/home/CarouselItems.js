@@ -63,32 +63,32 @@ export default function CarouselItems() {
       <div className="relative px-8">
         <button
           onClick={scrollLeft}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#D4A017] text-[#333333] p-2 rounded-full hover:bg-[#A8B5A2] transition-colors duration-200"
+          className="absolute left-0 top-1/2  bg-[#D4A017] text-[#333333] p-2 rounded-full hover:bg-[#A8B5A2] transition-colors duration-200"
         >
           <FaChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={scrollRight}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-[#D4A017] text-[#333333] p-2 rounded-full hover:bg-[#A8B5A2] transition-colors duration-200"
+          className="absolute right-0 top-1/2 bg-[#D4A017] text-[#333333] p-2 rounded-full hover:bg-[#A8B5A2] transition-colors duration-200"
         >
           <FaChevronRight className="w-6 h-6" />
         </button>
 
         <div
           ref={carouselRef}
-          className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth space-x-4 pb-4"
+          className="flex overflow-x-auto scroll-smooth space-x-6 pb-6"
         >
           {carouselItems.map((item, index) => (
             <div
               key={index}
-              className="flex-none w-96 snap-center bg-[#F9FAFB] text-[#333333] rounded-lg shadow-md overflow-hidden"
+              className="flex-none w-96  bg-[#F9FAFB] text-[#333333] rounded-lg shadow-md overflow-hidden"
             >
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-64 object-cover"
+                className="w-full h-64"
               />
-              <div className="p-6 space-y-3">
+              <div className="p-6 space-y-4">
                 <h2 className="text-2xl font-semibold">{item.title}</h2>
                 <p className="text-base">{item.description}</p>
                 <Link href={item.link}>

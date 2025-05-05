@@ -1,9 +1,17 @@
 export default function ServicesOverview() {
+  const services=[
+    "Comprehensive property histories with no hidden information",
+    "Interactive price and tax history visualizations",
+    "Detailed neighborhood and market trend analysis",
+    "Accurate property valuations based on multiple data points",
+    "User-friendly interface with powerful search capabilities"
+
+  ]
   return (
     <section className=" bg-[#1A3C5A] text-[#F9FAFB] py-12">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-center text-[#F9FAFB] mb-6">Our Services</h1>
-        <p className="text-lg text-center text-[#F9FAFB] max-w-3xl mx-auto">
+        <h1 className="text-5xl font-bold text-center text-[#F9FAFB] mb-6">Our Services</h1>
+        <p className="text-lg text-center text-[#F9FAFB]">
           Discover how we can help you navigate the real estate market with our comprehensive suite of tools and services.
         </p>
       </div>
@@ -21,29 +29,17 @@ export default function ServicesOverview() {
           </p>
         </div>
 
-        <div className="bg-[#F9FAFB] rounded-lg shadow-md p-8">
-          <h3 className="text-2xl font-bold text-[#333333] mb-4">Why Choose Our Services?</h3>
-          <ul className="space-y-3">
-            <li className="flex items-start">
-              <span className="bg-[#D4A017] text-[#F9FAFB] flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-1 mr-3">✓</span>
-              <span className="text-[#333333]">Comprehensive property histories with no hidden information</span>
-            </li>
-            <li className="flex items-start">
-              <span className="bg-[#D4A017] text-[#F9FAFB] flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-1 mr-3">✓</span>
-              <span className="text-[#333333]">Interactive price and tax history visualizations</span>
-            </li>
-            <li className="flex items-start">
-              <span className="bg-[#D4A017] text-[#F9FAFB] flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-1 mr-3">✓</span>
-              <span className="text-[#333333]">Detailed neighborhood and market trend analysis</span>
-            </li>
-            <li className="flex items-start">
-              <span className="bg-[#D4A017] text-[#F9FAFB] flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-1 mr-3">✓</span>
-              <span className="text-[#333333]">Accurate property valuations based on multiple data points</span>
-            </li>
-            <li className="flex items-start">
-              <span className="bg-[#D4A017] text-[#F9FAFB] flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mt-1 mr-3">✓</span>
-              <span className="text-[#333333]">User-friendly interface with powerful search capabilities</span>
-            </li>
+        <div className="bg-[#F9FAFB] rounded-lg shadow-md p-8 h-full">
+          <h3 className="text-3xl font-bold text-[#333333] mb-10">Why Choose Our Services?</h3>
+          <ul className="space-y-6">
+            {services.map((service,index)=>{
+              return (
+                <li className="flex" key={index}>
+                  <span className="bg-[#D4A017] text-[#F9FAFB] flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center mr-3">✓</span>
+                  <span className="text-[#333333]">{service}</span>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </div>

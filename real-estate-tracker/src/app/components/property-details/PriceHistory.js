@@ -12,7 +12,6 @@ import {
   Legend,
 } from 'chart.js';
 
-// Register Chart.js components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -51,16 +50,13 @@ export default function PriceHistoryGraph() {
     { date: "1997-05-07", price: 26200, time: 862963200000, pricePerSquareFoot: 25, priceChangeRate: 0, event: "Sold", source: "Public Record" }
   ];
 
-  // Filter out entries with null prices and sort by date (oldest to newest)
   const validPriceData = priceHistory
     .filter(entry => entry.price !== null)
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  // Prepare data for the chart
   const labels = validPriceData.map(entry => entry.date);
   const prices = validPriceData.map(entry => entry.price);
 
-  // Analytics calculations
   const averagePrice = prices.reduce((sum, price) => sum + price, 0) / prices.length;
   const totalPriceChange = prices[prices.length - 1] - prices[0];
   const highestPrice = Math.max(...prices);
@@ -77,7 +73,6 @@ export default function PriceHistoryGraph() {
         label: 'Price History',
         data: prices,
         borderColor: '#D4A017',
-        backgroundColor: '#D4A017',
         pointBackgroundColor: '#D4A017',
         pointBorderColor: '#D4A017',
         fill: true,
@@ -137,14 +132,14 @@ export default function PriceHistoryGraph() {
   return (
     <section className="py-12 bg-[#1A3C5A] text-[#F9FAFB]">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-2xl font-bold text-[#F9FAFB] mb-6">Price History Graph</h2>
+        <h2 className="text-5xl font-bold text-[#F9FAFB] mb-6">Price History Graph</h2>
         <div className="bg-[#F9FAFB] rounded-lg shadow-md p-6 mb-6">
           <Line data={chartData} options={options} />
         </div>
         <div className="bg-[#F9FAFB] rounded-lg shadow-md p-6 text-[#333333]">
-          <h3 className="text-xl font-bold text-[#D4A017] mb-4">Price History Analytics</h3>
+          <h3 className="text-3xl font-bold text-[#D4A017] mb-4">Price History Analytics</h3>
           <ul className="space-y-2 text-base">
-            <li>Average Price: ${averagePrice.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</li>
+            <li>Average Price: ${averagePrice.toLocaleString()}</li>
             <li>Total Price Change: ${totalPriceChange.toLocaleString()} (from earliest to latest)</li>
             <li>Highest Price: ${highestPrice.toLocaleString()} on {highestPriceEntry.date}</li>
             <li>Lowest Price: ${lowestPrice.toLocaleString()} on {lowestPriceEntry.date}</li>

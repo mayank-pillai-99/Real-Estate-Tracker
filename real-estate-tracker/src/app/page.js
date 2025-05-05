@@ -1,9 +1,8 @@
 import Head from 'next/head';
 import Navbar from './components/layout/Navbar';
-import SearchBar from './components/home/SearchBar';
 import HeroSection from './components/home/HeroSection';
 import CarouselItems from './components/home/CarouselItems';
-// import FeaturedProperties from './components/home/FeaturedProperties';
+import SampleProperties from './components/home/SampleProperties';
 import Testimonials from './components/home/Testimonials';
 import Footer from './components/layout/Footer';
 
@@ -18,7 +17,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <CarouselItems />
-      <SearchBar />
+      <SampleProperties />
       <Testimonials />
       <Footer />
     

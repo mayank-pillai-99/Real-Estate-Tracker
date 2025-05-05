@@ -4,10 +4,10 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#112A40] text-[#F9FAFB] py-8">
-      <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="w-full bg-[#112A40] text-[#F9FAFB] py-6">
+      <div className="w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 ">
         <div>
-          <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+          <h3 className="text-lg font-bold mb-4">Quick Links</h3>
           <ul className="space-y-2">
             <li>
               <Link href="/about" className="hover:text-[#A8B5A2] transition-colors duration-200">
@@ -43,9 +43,9 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+          <h3 className="text-lg font-bold mb-4">Contact Us</h3>
           <ul className="space-y-2">
-            <li>Phone: <a href="tel:+1234567890" className="hover:text-[#A8B5A2] transition-colors duration-200">+91 9999999999</a></li>
+            <li>Phone: <a href="tel:+91 9999999999" className="hover:text-[#A8B5A2] transition-colors duration-200">+91 9999999999</a></li>
             <li>Email: <a href="mailto:support@realytics.com" className="hover:text-[#A8B5A2] transition-colors duration-200">support@realytics.com</a></li>
             <li>
               <Link href="/services" className="hover:text-[#A8B5A2] transition-colors duration-200">
@@ -56,9 +56,9 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
-          <div className="flex space-x-4">
-            <a href="https://facebook.com" target="_blank"  className="hover:text-[#D4A017] transition-colors duration-200">
+          <h3 className="text-lg font-bold mb-4">Follow Us</h3>
+          <div className="flex space-x-5">
+            <a href="https://facebook.com" target="_blank"  className="hover:text-[#D4A017] transition-colors duration-200 ">
               <FaFacebook className="w-6 h-6" />
             </a>
             <a href="https://twitter.com" target="_blank" className="hover:text-[#D4A017] transition-colors duration-200">
@@ -74,7 +74,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="text-center mt-8 text-sm">
+      <div className="text-center mt-8">
         © 2025 Realytics. All rights reserved.
       </div>
     </footer>

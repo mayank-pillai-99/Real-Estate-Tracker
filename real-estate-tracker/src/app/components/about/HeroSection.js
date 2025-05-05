@@ -11,22 +11,20 @@ export default function HeroSection() {
   return (
     <div className="w-full bg-[#1A3C5A] text-[#F9FAFB]">
       <div
-        className="relative flex flex-col items-center justify-center p-8 min-h-[60vh] bg-cover bg-center"
+        className="relative flex flex-col items-center justify-center min-h-[60vh] bg-cover bg-center"
         style={{
           backgroundImage: `url('/about/team_photo.png')`, 
         }}
       >
         <div className="absolute inset-0 bg-[#1A3C5A]/70" />
-        <div className="relative z-10 text-center space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+        <div className="z-10 text-center space-y-8">
+          <h1 className="text-4xl md:text-6xl font-bold">
           About Us
           </h1>
-          <p className="text-lg">
+          <p className="text-xl">
           We're dedicated to providing transparent real estate information, helping you make informed decisions about your next home.
           </p>
-          <div className="flex justify-center space-x-4">
-          </div>
-          <div className="flex justify-center space-x-8 mt-6">
+          <div className="flex justify-center space-x-14 mt-10">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <p className="text-2xl font-bold">{stat.value}</p>

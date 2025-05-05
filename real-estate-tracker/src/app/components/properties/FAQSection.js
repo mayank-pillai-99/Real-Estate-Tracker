@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Link from 'next/link';
 import {
   Accordion,
@@ -35,32 +33,31 @@ export default function FAQSection() {
   return (
     <section className="py-12 bg-[#1A3C5A] text-gray-100">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-white mb-8">Frequently Asked Questions</h2>
+        <h2 className="text-4xl font-bold text-white mb-8">Frequently Asked Questions</h2>
         
-        <div className="space-y-6">
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
-              <div key={index} className="border-b border-gray-700">
-                <AccordionItem value={`item-${index}`} className="border-none">
-                  <AccordionTrigger className="text-lg font-medium text-white hover:text-indigo-300 py-4">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-300 text-base leading-relaxed pt-2 pb-4">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              </div>
-            ))}
-          </Accordion>
-        </div>
+        <Accordion type="single" collapsible className="w-full space-y-4">
+          {faqs.map((faq, index) => (
+            <div key={index} className="border-b border-gray-600">
+              <AccordionItem value={`item-${index}`} >
+                <AccordionTrigger className="text-lg  text-white hover:text-[#D4A017] py-4">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-300 text-lg pt-2 pb-4">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            </div>
+          ))}
+        </Accordion>
+
         
-        <div className="mt-12 p-6 bg-gray-800 rounded-lg shadow-lg">
-          <h3 className="text-xl font-semibold text-white mb-4">Still have questions?</h3>
-          <p className="text-gray-400 mb-6">
+        <div className="mt-12 p-6 bg-[#F9FAFB] rounded-lg shadow-lg">
+          <h3 className="text-xl font-semibold text-gray-800 mb-4">Still have questions?</h3>
+          <p className="text-gray-600 mb-6">
             Can't find the answer you're looking for? Please reach out to our customer support team.
           </p>
           <Link href="/services/">
-            <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200">
+            <button className="px-6 py-3 bg-[#D4A017] text-[#333333] rounded-lg hover:bg-[#A8B5A2] transition-colors duration-200">
               Contact Support
             </button>
           </Link>

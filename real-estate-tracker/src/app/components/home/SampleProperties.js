@@ -80,8 +80,8 @@ export default function Properties() {
 
   return (
     <section className="w-full bg-[#1A3C5A] p-6">
-      <h2 className="text-3xl font-bold text-gray-100 mb-6">Featured Properties</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+      <h2 className="text-3xl font-bold text-gray-100 mb-10">Featured Properties</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full">
         {propertyDetails.searchResults.slice(0, 2).map((property, index) => (
           <div
             key={index}
@@ -102,21 +102,21 @@ export default function Properties() {
               <p className="text-2xl font-bold text-indigo-600 mt-2">
                 ${property.property.price.value.toLocaleString()}
               </p>
-              <div className="flex space-x-4 mt-2 text-gray-700">
+              <div className="flex space-x-8 mt-2 text-gray-600">
                 <span>{property.property.bedrooms} Beds</span>
                 <span>{property.property.bathrooms} Baths</span>
                 <span>{property.property.livingArea} sqft</span>
               </div>
-              <p className="text-gray-500 mt-2">
-                {property.property.listCardRecommendation.flexFieldRecommendations[0]?.displayString || 'No highlights available'}
+              <p className="text-gray-600 mt-2">
+                {property.property.listCardRecommendation.flexFieldRecommendations[0].displayString}
               </p>
             </div>
           </div>
         ))}
       </div>
-      <div className="mt-8 text-center">
+      <div className="mt-10 text-center">
         <Link href="/properties">
-          <button className="bg-[#D4A017] hover:bg-[#A8B5A2] text-[#333333] font-medium py-3 px-8 rounded-lg transition-colors duration-200">
+          <button className="bg-[#D4A017] hover:bg-[#A8B5A2] text-[#333333] py-3 px-8 rounded-lg transition-colors duration-200">
             View More Properties
           </button>
         </Link>

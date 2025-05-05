@@ -28,15 +28,15 @@ export default function SearchBar() {
 
   return (
     <div className="w-full bg-[#1A3C5A] text-[#F9FAFB] p-6">
-      <h1 className="text-4xl font-bold mb-4">Find Your Dream Home</h1>
-      <form onSubmit={handleSearch} className="flex items-center space-x-2 mb-4">
-        <div className="flex items-center bg-[#F9FAFB] rounded-lg p-2 flex-1">
+      <h1 className="text-5xl font-bold mb-4">Find Your Dream Home</h1>
+      <form onSubmit={handleSearch} className="flex space-x-2 mb-4">
+        <div className="flex bg-[#F9FAFB] rounded-lg p-2 flex-1">
           <span className="mr-2 text-[#333333]">🏠</span>
           <input
             type="text"
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            className="bg-transparent outline-none w-full text-[#333333] placeholder-[#333333]"
+            className=" outline-none w-full text-[#333333] placeholder-[#333333]"
             placeholder="Enter city"
           />
         </div>
@@ -126,7 +126,7 @@ export default function SearchBar() {
       </div>
       <div className="mt-4">
         <span className="text-[#D4A017]">Popular:</span>
-        <div className="flex space-x-2 mt-2">
+        <div className="flex flex-col md:flex-row  space-y-2 space-x-0 md:space-y-0 md:space-x-2 mt-2">
           {popularCities.map((cityName) => (
             <button
               key={cityName}

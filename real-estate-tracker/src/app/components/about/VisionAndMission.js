@@ -5,7 +5,6 @@ export default function VisionAndMission() {
     <section className="py-12 bg-[#1A3C5A]">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Vision */}
           <div className="bg-[#F9FAFB] rounded-lg shadow-md p-8">
             <div className="inline-block p-3 bg-[#D4A017]/20 rounded-full mb-6">
               <FaEye className="text-2xl text-[#D4A017]" />
@@ -36,7 +35,6 @@ export default function VisionAndMission() {
             </div>
           </div>
 
-          {/* Mission */}
           <div className="bg-[#F9FAFB] rounded-lg shadow-md p-8">
             <div className="inline-block p-3 bg-[#D4A017]/20 rounded-full mb-6">
               <FaHandshake className="text-2xl text-[#D4A017]" />
