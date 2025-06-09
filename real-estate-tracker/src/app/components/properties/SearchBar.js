@@ -1,30 +1,78 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { useSearch } from '../../context/SearchContext';
+import React, { useState } from 'react'
+import { useSearch } from '../../context/SearchContext' // grabbing the search context
 
 export default function SearchBar() {
-  const { setFilters } = useSearch();
-  const [city, setCity] = useState('');
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
-  const [propertyType, setPropertyType] = useState('All Types');
-  const [bedrooms, setBedrooms] = useState('Any');
-  const [bathrooms, setBathrooms] = useState('Any');
+  const { setFilters } = useSearch()
 
+  // state for search inputs - defaulting to Houston, TX
+  const [location, setLocation] = useState('') // API param: location
+  const [minPrice, setMinPrice] = useState('') // API param: minPrice
+  const [maxPrice, setMaxPrice] = useState('') // API param: maxPrice
+  const [propertyType, setPropertyType] = useState('All Types') // API param: home_type
+  const [bedroomsMin, setBedroomsMin] = useState('Any') // API param: bedsMin
+  const [bedroomsMax, setBedroomsMax] = useState('Any') // API param: bedsMax
+  const [bathroomsMin, setBathroomsMin] = useState('Any') // API param: bathsMin
+  const [bathroomsMax, setBathroomsMax] = useState('Any') // API param: bathsMax
+  const [sortOption, setSortOption] = useState('Homes_for_You') // API param: sort
+
+  // popular cities for quick selection
   const popularCities = [
     'New York',
     'Buffalo',
     'San Francisco',
     'Chicago',
     'Miami',
-  ];
+  ]
 
+  // handle the search and update filters
   const handleSearch = (e) => {
-    e.preventDefault();
-    const newFilters = { city, minPrice, maxPrice, propertyType, bedrooms, bathrooms };
-    setFilters(newFilters);
-  };
+    e.preventDefault()
+
+    // mapping property type to API format
+    const homeTypeMap = {
+      'All Types': '',
+      townhome: 'Townhomes',
+      singleFamily: 'Houses',
+      multiFamily: 'Multi-family',
+      condo: 'Condos',
+    }
+    const homeType = homeTypeMap[propertyType]
+
+    // mapping bedrooms to API params
+    const bedsMin = bedroomsMin === 'Any' ? 0 : bedroomsMin === '3+' ? 3 : parseInt(bedroomsMin)
+    const bedsMax = bedroomsMax === 'Any' ? 0 : bedroomsMax === '3+' ? 0 : parseInt(bedroomsMax)
+
+    // mapping bathrooms to API params - handling 1.5+, etc.
+    const bathMap = {
+      'Any': 0,
+      'OnePlus': 1,
+      'OneHalfPlus': 1.5,
+      'TwoPlus': 2,
+      'ThreePlus': 3,
+      'FourPlus': 4,
+    }
+    const bathsMin = bathMap[bathroomsMin]
+    const bathsMax = bathMap[bathroomsMax] === 0 ? 0 : bathMap[bathroomsMax]
+
+    // setting the filters for the API call (to be used elsewhere)
+    const newFilters = {
+      location: location || '', // API param: location
+      status_type: 'ForSale', // hardcoded as per API usage
+      minPrice: minPrice ? parseInt(minPrice) : 0, // API param: minPrice
+      maxPrice: maxPrice ? parseInt(maxPrice) : 0, // API param: maxPrice
+      home_type: homeType, // API param: home_type
+      bedsMin, // API param: bedsMin
+      bedsMax, // API param: bedsMax
+      bathsMin, // API param: bathsMin
+      bathsMax, // API param: bathsMax
+      sort: sortOption, // API param: sort
+    }
+
+    console.log('SearchBar: Setting filters:', newFilters) // Debug log
+    setFilters(newFilters)
+  }
 
   return (
     <div className="w-full bg-[#1A3C5A] text-[#F9FAFB] p-6">
@@ -34,10 +82,10 @@ export default function SearchBar() {
           <span className="mr-2 text-[#333333]">🏠</span>
           <input
             type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            className=" outline-none w-full text-[#333333] placeholder-[#333333]"
-            placeholder="Enter city"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            className="outline-none w-full text-[#333333] placeholder-[#333333]"
+            placeholder="Enter city (e.g., Houston, TX)"
           />
         </div>
         <button
@@ -48,7 +96,8 @@ export default function SearchBar() {
         </button>
       </form>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        {/* Price Range */}
         <div>
           <label className="block mb-1">Price Range</label>
           <div className="flex space-x-2">
@@ -79,6 +128,7 @@ export default function SearchBar() {
           </div>
         </div>
 
+        {/* Property Type */}
         <div>
           <label className="block mb-1">Property Type</label>
           <select
@@ -87,52 +137,101 @@ export default function SearchBar() {
             className="w-full p-2 bg-[#F9FAFB] rounded-lg text-[#333333]"
           >
             <option value="All Types">All Types</option>
-            <option value="townhome">TownHomes</option>
+            <option value="townhome">Townhomes</option>
             <option value="singleFamily">Houses</option>
-            <option value="multiFamily">Multi-Family</option>
-            <option value="condo">Condo</option>
+            <option value="multiFamily">Multi-family</option>
+            <option value="condo">Condos</option>
           </select>
         </div>
 
+        {/* Bedrooms */}
         <div>
           <label className="block mb-1">Bedrooms</label>
-          <select
-            value={bedrooms}
-            onChange={(e) => setBedrooms(e.target.value)}
-            className="w-full p-2 bg-[#F9FAFB] rounded-lg text-[#333333]"
-          >
-            <option value="Any">Any</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3+">3+</option>
-          </select>
+          <div className="flex space-x-2">
+            <select
+              value={bedroomsMin}
+              onChange={(e) => setBedroomsMin(e.target.value)}
+              className="w-full p-2 bg-[#F9FAFB] rounded-lg text-[#333333]"
+            >
+              <option value="Any">Min Beds</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3+">3+</option>
+            </select>
+            <select
+              value={bedroomsMax}
+              onChange={(e) => setBedroomsMax(e.target.value)}
+              className="w-full p-2 bg-[#F9FAFB] rounded-lg text-[#333333]"
+            >
+              <option value="Any">Max Beds</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3+">3+</option>
+            </select>
+          </div>
         </div>
 
+        {/* Bathrooms */}
         <div>
           <label className="block mb-1">Bathrooms</label>
+          <div className="flex space-x-2">
+            <select
+              value={bathroomsMin}
+              onChange={(e) => setBathroomsMin(e.target.value)}
+              className="w-full p-2 bg-[#F9FAFB] rounded-lg text-[#333333]"
+            >
+              <option value="Any">Min Baths</option>
+              <option value="OnePlus">1+</option>
+              <option value="OneHalfPlus">1.5+</option>
+              <option value="TwoPlus">2+</option>
+              <option value="ThreePlus">3+</option>
+              <option value="FourPlus">4+</option>
+            </select>
+            <select
+              value={bathroomsMax}
+              onChange={(e) => setBathroomsMax(e.target.value)}
+              className="w-full p-2 bg-[#F9FAFB] rounded-lg text-[#333333]"
+            >
+              <option value="Any">Max Baths</option>
+              <option value="OnePlus">1+</option>
+              <option value="OneHalfPlus">1.5+</option>
+              <option value="TwoPlus">2+</option>
+              <option value="ThreePlus">3+</option>
+              <option value="FourPlus">4+</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Sort Option */}
+        <div>
+          <label className="block mb-1">Sort By</label>
           <select
-            value={bathrooms}
-            onChange={(e) => setBathrooms(e.target.value)}
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
             className="w-full p-2 bg-[#F9FAFB] rounded-lg text-[#333333]"
           >
-            <option value="Any">Any</option>
-            <option value="OnePlus">1+</option>
-            <option value="OneHalfPlus">1.5+</option>
-            <option value="TwoPlus">2+</option>
-            <option value="ThreePlus">3+</option>
-            <option value="FourPlus">4+</option>
+            <option value="Homes_for_You">Homes for You</option>
+            <option value="Price_High_Low">Price: High to Low</option>
+            <option value="Price_Low_High">Price: Low to High</option>
+            <option value="Newest">Newest</option>
+            <option value="Bedrooms">Bedrooms</option>
+            <option value="Bathrooms">Bathrooms</option>
+            <option value="Square_Feet">Square Feet</option>
+            <option value="Lot_Size">Lot Size</option>
           </select>
         </div>
       </div>
+
+      {/* Popular Cities */}
       <div className="mt-4">
         <span className="text-[#D4A017]">Popular:</span>
-        <div className="flex flex-col md:flex-row  space-y-2 space-x-0 md:space-y-0 md:space-x-2 mt-2">
+        <div className="flex flex-col md:flex-row space-y-2 space-x-0 md:space-y-0 md:space-x-2 mt-2">
           {popularCities.map((cityName) => (
             <button
               key={cityName}
-              onClick={() => setCity(cityName)}
+              onClick={() => setLocation(cityName)}
               className={`px-4 py-2 rounded-full ${
-                city === cityName ? 'bg-[#D4A017] text-[#333333]' : 'bg-[#F9FAFB] text-[#333333]'
+                location === cityName ? 'bg-[#D4A017] text-[#333333]' : 'bg-[#F9FAFB] text-[#333333]'
               } hover:bg-[#A8B5A2] transition-colors duration-200`}
             >
               {cityName}
@@ -141,5 +240,5 @@ export default function SearchBar() {
         </div>
       </div>
     </div>
-  );
+  )
 }

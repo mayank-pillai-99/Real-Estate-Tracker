@@ -4,14 +4,7 @@ import { createContext, useContext, useState } from 'react';
 const SearchContext = createContext();
 
 export function SearchProvider({ children }) {
-  const [filters, setFilters] = useState({
-    city: '',
-    minPrice: '',
-    maxPrice: '',
-    propertyType: '',
-    bedrooms: '',
-    bathrooms: 'Any',
-  });
+  const [filters, setFilters] = useState(null); // Initialize as null instead of an object
 
   return (
     <SearchContext.Provider value={{ filters, setFilters }}>
