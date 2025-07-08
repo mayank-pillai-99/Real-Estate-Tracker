@@ -49,13 +49,20 @@ const PropertyListings = () => {
         ...(effectiveFilters.bathsMax !== 0 && { bathsMax: effectiveFilters.bathsMax }),
         sort: effectiveFilters.sort,
       }).toString()
-      const url = `/api/properties?${queryParams}`
+      const url = `https://zillow69.p.rapidapi.com/search?${queryParams}`
+      const options = {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-key': process.env.NEXT_PUBLIC_API_KEY,
+          'x-rapidapi-host': 'zillow69.p.rapidapi.com'
+        }
+      }
       console.log('PropertyListings: Fetching URL:', url)
       try {
-        const response = await fetch(url)
+        const response = await fetch(url, options)
         if (!response.ok) {
-          const errorData = await response.json()
-          throw new Error(errorData.error || `HTTP error! status: ${response.status}`)
+          const errorText = await response.text()
+          throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`)
         }
         const result = await response.json()
         console.log('PropertyListings: API response:', result)
@@ -92,7 +99,6 @@ const PropertyListings = () => {
     }
     fetchProperties()
   }, [filters, page])
-
   const handleNextPage = () => {
     if (page < totalPages - 1) setPage(page + 1)
   }

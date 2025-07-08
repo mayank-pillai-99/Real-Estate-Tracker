@@ -26,11 +26,18 @@ export default function PropertyDetails() {
       setLoading(true)
       setError(null)
       try {
-        const url = `/api/property-details?zpid=${zpid}`
-        const response = await fetch(url)
+        const url = `https://zillow69.p.rapidapi.com/property?zpid=${zpid}`
+        const options = {
+          method: 'GET',
+          headers: {
+            'x-rapidapi-key': process.env.NEXT_PUBLIC_API_KEY,
+            'x-rapidapi-host': 'zillow69.p.rapidapi.com'
+          }
+        }
+        const response = await fetch(url, options)
         if (!response.ok) {
-          const errorData = await response.json()
-          throw new Error(errorData.error || `HTTP error! status: ${response.status}`)
+          const errorText = await response.text()
+          throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`)
         }
         const result = await response.json()
         console.log('PropertyDetails: API response:', result)
