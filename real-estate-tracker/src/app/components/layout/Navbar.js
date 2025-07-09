@@ -7,12 +7,14 @@ import { useSession, signIn, signOut } from 'next-auth/react'
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
+  console.log('Navbar session:', { session, status })
 
   const links = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About Us' },
     { href: '/properties', label: 'Properties' },
+    { href: '/favorites', label: 'Favorites' },
     { href: '/services', label: 'Services' },
     { href: '/blog', label: 'Blog' },
   ]

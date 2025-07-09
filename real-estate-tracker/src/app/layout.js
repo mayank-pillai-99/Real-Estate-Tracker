@@ -4,6 +4,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { SessionProvider } from 'next-auth/react';
 import { SearchProvider } from './context/SearchContext';
+import { FavoritesProvider } from './context/FavoritesContext';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,7 +25,9 @@ export default function RootLayout({ children }) {
       <body className="bg-[#F9FAFB] text-[#333333]">
         <SessionProvider>
           <SearchProvider>
-            <main>{children}</main>
+            <FavoritesProvider>
+              <main>{children}</main>
+            </FavoritesProvider>
           </SearchProvider>
         </SessionProvider>
       </body>
