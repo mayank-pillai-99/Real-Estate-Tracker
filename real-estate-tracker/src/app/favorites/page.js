@@ -25,7 +25,7 @@ export default function Favorites() {
       try {
         const fetchedProperties = []
         for (const zpid of favorites) {
-          const url = `https://zillow69.p.rapidapi.com/search?zpid=${zpid}`
+          const url = `https://zillow69.p.rapidapi.com/property?zpid=${zpid}`
           console.log('Fetching property details for zpid:', zpid)
           const response = await fetch(url, {
             method: 'GET',
