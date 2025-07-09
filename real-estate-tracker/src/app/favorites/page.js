@@ -1,4 +1,3 @@
-
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -26,13 +25,23 @@ export default function Favorites() {
       try {
         const fetchedProperties = []
         for (const zpid of favorites) {
-          const url = `/api/property-details?zpid=${zpid}`
-          const response = await fetch(url)
+          const url = `https://zillow69.p.rapidapi.com/search?zpid=${zpid}`
+          console.log('Fetching property details for zpid:', zpid)
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+              'x-rapidapi-key': process.env.NEXT_PUBLIC_API_KEY,
+              'x-rapidapi-host': 'zillow69.p.rapidapi.com',
+            },
+          })
+          console.log('Response status:', response.status, 'OK:', response.ok)
           if (!response.ok) {
-            const errorData = await response.json()
-            throw new Error(errorData.error || `HTTP error! status: ${response.status}`)
+            const text = await response.text()
+            console.error('Response body:', text)
+            throw new Error(`HTTP error! status: ${response.status}, body: ${text.substring(0, 100)}`)
           }
           const result = await response.json()
+          console.log('Property details:', result)
           fetchedProperties.push(result)
         }
         setProperties(fetchedProperties)
@@ -111,7 +120,9 @@ export default function Favorites() {
           {properties.map((property) => (
             <div key={property.zpid} className="mb-4">
               <Link href={`/property-details?zpid=${property.zpid}`}>
-                <h2 className="text-xl hover:text-[#D4A017]">{property.address}</h2>
+                <h2 className="text-xl hover:text-[#D4A017]">
+                  {property.address?.streetAddress || 'Unknown Address'}, {property.address?.city || 'Unknown City'}, {property.address?.state || 'Unknown State'} {property.address?.zipcode || 'Unknown Zipcode'}
+                </h2>
               </Link>
             </div>
           ))}
