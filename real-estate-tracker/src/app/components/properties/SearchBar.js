@@ -1,23 +1,20 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useSearch } from '../../context/SearchContext' // grabbing the search context
-
+import { useSearch } from '../../context/SearchContext' 
 export default function SearchBar() {
   const { setFilters } = useSearch()
 
-  // state for search inputs - defaulting to Houston, TX
-  const [location, setLocation] = useState('') // API param: location
-  const [minPrice, setMinPrice] = useState('') // API param: minPrice
-  const [maxPrice, setMaxPrice] = useState('') // API param: maxPrice
-  const [propertyType, setPropertyType] = useState('All Types') // API param: home_type
-  const [bedroomsMin, setBedroomsMin] = useState('Any') // API param: bedsMin
-  const [bedroomsMax, setBedroomsMax] = useState('Any') // API param: bedsMax
-  const [bathroomsMin, setBathroomsMin] = useState('Any') // API param: bathsMin
-  const [bathroomsMax, setBathroomsMax] = useState('Any') // API param: bathsMax
-  const [sortOption, setSortOption] = useState('Homes_for_You') // API param: sort
+  const [location, setLocation] = useState('') 
+  const [minPrice, setMinPrice] = useState('') 
+  const [maxPrice, setMaxPrice] = useState('') 
+  const [propertyType, setPropertyType] = useState('All Types') 
+  const [bedroomsMin, setBedroomsMin] = useState('Any') 
+  const [bedroomsMax, setBedroomsMax] = useState('Any') 
+  const [bathroomsMin, setBathroomsMin] = useState('Any') 
+  const [bathroomsMax, setBathroomsMax] = useState('Any') 
+  const [sortOption, setSortOption] = useState('Homes_for_You') 
 
-  // popular cities for quick selection
   const popularCities = [
     'New York',
     'Buffalo',
@@ -26,11 +23,11 @@ export default function SearchBar() {
     'Miami',
   ]
 
-  // handle the search and update filters
+ 
   const handleSearch = (e) => {
     e.preventDefault()
 
-    // mapping property type to API format
+
     const homeTypeMap = {
       'All Types': '',
       townhome: 'Townhomes',
@@ -40,11 +37,10 @@ export default function SearchBar() {
     }
     const homeType = homeTypeMap[propertyType]
 
-    // mapping bedrooms to API params
+
     const bedsMin = bedroomsMin === 'Any' ? 0 : bedroomsMin === '3+' ? 3 : parseInt(bedroomsMin)
     const bedsMax = bedroomsMax === 'Any' ? 0 : bedroomsMax === '3+' ? 0 : parseInt(bedroomsMax)
 
-    // mapping bathrooms to API params - handling 1.5+, etc.
     const bathMap = {
       'Any': 0,
       'OnePlus': 1,
@@ -56,21 +52,20 @@ export default function SearchBar() {
     const bathsMin = bathMap[bathroomsMin]
     const bathsMax = bathMap[bathroomsMax] === 0 ? 0 : bathMap[bathroomsMax]
 
-    // setting the filters for the API call (to be used elsewhere)
     const newFilters = {
-      location: location || '', // API param: location
-      status_type: 'ForSale', // hardcoded as per API usage
-      minPrice: minPrice ? parseInt(minPrice) : 0, // API param: minPrice
-      maxPrice: maxPrice ? parseInt(maxPrice) : 0, // API param: maxPrice
-      home_type: homeType, // API param: home_type
-      bedsMin, // API param: bedsMin
-      bedsMax, // API param: bedsMax
-      bathsMin, // API param: bathsMin
-      bathsMax, // API param: bathsMax
-      sort: sortOption, // API param: sort
+      location: location || '', 
+      status_type: 'ForSale',
+      minPrice: minPrice ? parseInt(minPrice) : 0,
+      maxPrice: maxPrice ? parseInt(maxPrice) : 0, 
+      home_type: homeType, 
+      bedsMin, 
+      bedsMax, 
+      bathsMin, 
+      bathsMax, 
+      sort: sortOption,
     }
 
-    console.log('SearchBar: Setting filters:', newFilters) // Debug log
+    console.log('SearchBar: Setting filters:', newFilters) 
     setFilters(newFilters)
   }
 
@@ -97,7 +92,6 @@ export default function SearchBar() {
       </form>
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-        {/* Price Range */}
         <div>
           <label className="block mb-1">Price Range</label>
           <div className="flex space-x-2">
@@ -128,7 +122,6 @@ export default function SearchBar() {
           </div>
         </div>
 
-        {/* Property Type */}
         <div>
           <label className="block mb-1">Property Type</label>
           <select
@@ -144,7 +137,6 @@ export default function SearchBar() {
           </select>
         </div>
 
-        {/* Bedrooms */}
         <div>
           <label className="block mb-1">Bedrooms</label>
           <div className="flex space-x-2">
@@ -171,7 +163,6 @@ export default function SearchBar() {
           </div>
         </div>
 
-        {/* Bathrooms */}
         <div>
           <label className="block mb-1">Bathrooms</label>
           <div className="flex space-x-2">
@@ -202,7 +193,6 @@ export default function SearchBar() {
           </div>
         </div>
 
-        {/* Sort Option */}
         <div>
           <label className="block mb-1">Sort By</label>
           <select
@@ -222,7 +212,6 @@ export default function SearchBar() {
         </div>
       </div>
 
-      {/* Popular Cities */}
       <div className="mt-4">
         <span className="text-[#D4A017]">Popular:</span>
         <div className="flex flex-col md:flex-row space-y-2 space-x-0 md:space-y-0 md:space-x-2 mt-2">

@@ -11,7 +11,6 @@ export function FavoritesProvider({ children }) {
 
   useEffect(() => {
     if (session) {
-      // Load favorites from localStorage for the authenticated user
       const storedFavorites = localStorage.getItem(`favorites_${session.user.id}`)
       if (storedFavorites) {
         setFavorites(JSON.parse(storedFavorites))
@@ -25,7 +24,7 @@ export function FavoritesProvider({ children }) {
       return
     }
     setFavorites((prev) => {
-      const newFavorites = [...new Set([...prev, zpid])] // Avoid duplicates
+      const newFavorites = [...new Set([...prev, zpid])] 
       localStorage.setItem(`favorites_${session.user.id}`, JSON.stringify(newFavorites))
       return newFavorites
     })

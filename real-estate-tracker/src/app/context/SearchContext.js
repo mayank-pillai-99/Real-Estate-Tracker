@@ -4,8 +4,7 @@ import { createContext, useContext, useState } from 'react';
 const SearchContext = createContext();
 
 export function SearchProvider({ children }) {
-  const [filters, setFilters] = useState(null); // Initialize as null instead of an object
-
+  const [filters, setFilters] = useState(null); 
   return (
     <SearchContext.Provider value={{ filters, setFilters }}>
       {children}
