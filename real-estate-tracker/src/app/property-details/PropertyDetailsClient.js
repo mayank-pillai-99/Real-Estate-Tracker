@@ -11,7 +11,7 @@ export default function PropertyDetailsClient() {
   const searchParams = useSearchParams()
   const zpid = searchParams.get('zpid')
   const [propertyDetails, setPropertyDetails] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -34,8 +34,7 @@ export default function PropertyDetailsClient() {
         }
         const response = await fetch(url, options)
         if (!response.ok) {
-          const errorText = await response.text()
-          throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`)
+          throw new Error(`HTTP error! status: ${response.status}`)
         }
         const result = await response.json()
         console.log('PropertyDetails: API response:', result)

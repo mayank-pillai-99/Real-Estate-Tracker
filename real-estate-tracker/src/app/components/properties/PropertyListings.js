@@ -61,15 +61,12 @@ const PropertyListings = () => {
       try {
         const response = await fetch(url, options)
         if (!response.ok) {
-          const errorText = await response.text()
-          throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`)
+          throw new Error(`HTTP error! status: ${response.status}`)
         }
         const result = await response.json()
         console.log('PropertyListings: API response:', result)
         setTotalPages(result.totalPages || 1)
-        const propsArray = Array.isArray(result.props) ? result.props : []
-        console.log('PropertyListings: propsArray after validation:', propsArray)
-        const mappedProperties = propsArray
+        const mappedProperties = result.props
           .filter(prop => {
             const isValidPrice = prop.price > 0
             console.log(`PropertyListings: Filtering property with zpid ${prop.zpid}, price: ${prop.price}, isValid: ${isValidPrice}`)

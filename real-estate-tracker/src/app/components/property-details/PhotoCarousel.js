@@ -34,8 +34,7 @@ export default function PhotoCarousel({ zpid }) {
         };
         const response = await fetch(url, options);
         if (!response.ok) {
-          const errorText = await response.text();
-          throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
         const result = await response.json();
         console.log('PhotoCarousel: API response:', result);
