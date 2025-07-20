@@ -34,11 +34,8 @@ export default function Favorites() {
               'x-rapidapi-host': 'zillow69.p.rapidapi.com',
             },
           })
-          console.log('Response status:', response.status, 'OK:', response.ok)
           if (!response.ok) {
-            const text = await response.text()
-            console.error('Response body:', text)
-            throw new Error(`HTTP error! status: ${response.status}, body: ${text.substring(0, 100)}`)
+            throw new Error(`HTTP error! status: ${response.status}`)
           }
           const result = await response.json()
           console.log('Property details:', result)

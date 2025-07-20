@@ -82,7 +82,7 @@ const PropertyListings = () => {
             lotAreaValue: prop.lotSize || prop.lotAreaValue || 0,
             lotAreaUnit: prop.lotAreaUnit || 'sqft',
             price: prop.price || 0,
-            imgSrc: prop.carouselPhotos && prop.carouselPhotos[0] ? prop.carouselPhotos[0].url : 'https://via.placeholder.com/300',
+            imgSrc: prop.imgSrc ? prop.imgSrc : 'https://via.placeholder.com/300',
             address: prop.address || 'Unknown Address',
             zpid: prop.zpid || '',
             detailUrl: prop.hdpUrl || prop.detailUrl || '#',
